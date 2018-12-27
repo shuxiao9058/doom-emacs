@@ -55,21 +55,16 @@ If any hook returns non-nil, all hooks after it are ignored.")
 
 ;; leader/localleader keys
 (define-prefix-command 'doom-leader 'doom-leader-map)
-(define-key doom-leader-map [override-state] 'all)
-
-(global-set-key (kbd doom-leader-alt-key) 'doom-leader)
-(after! evil
-  (global-set-key (kbd doom-leader-alt-key) nil)
-  (general-define-key :states '(emacs insert) doom-leader-alt-key 'doom-leader)
-  (general-define-key :states '(normal visual motion replace) doom-leader-key 'doom-leader))
+(defvar doom-leader-alist `((t . ,doom-leader-map)))
+(add-to-list 'emulation-mode-map-alists 'doom-leader-alist)
 
 ;; We avoid `general-create-definer' to ensure that :states, :wk-full-keys and
 ;; :keymaps cannot be overwritten.
 (defmacro define-leader-key! (&rest args)
   `(general-define-key
     :states nil
-    :wk-full-keys nil
     :keymaps 'doom-leader-map
+    :prefix doom-leader-alt-key
     ,@args))
 
 (general-create-definer define-localleader-key!
@@ -80,6 +75,14 @@ If any hook returns non-nil, all hooks after it are ignored.")
 ;; Because :non-normal-prefix doesn't work for non-evil sessions (only evil's
 ;; emacs state), we must redefine `define-localleader-key!' once evil is loaded
 (after! evil
+  (defmacro define-leader-key! (&rest args)
+    `(general-define-key
+      :states '(normal visual motion insert)
+      :keymaps 'doom-leader-map
+      :prefix doom-leader-key
+      :non-normal-prefix doom-leader-alt-key
+      ,@args))
+
   (general-create-definer define-localleader-key!
     :states (cdr general-describe-evil-states)
     :major-modes t
@@ -144,7 +147,6 @@ For example, :nvi will map to (list 'normal 'visual 'insert). See
 (put :keymap       'lisp-indent-function 'defun)
 (put :mode         'lisp-indent-function 'defun)
 (put :prefix       'lisp-indent-function 'defun)
-(put :alt-prefix   'lisp-indent-function 'defun)
 (put :unless       'lisp-indent-function 'defun)
 (put :if           'lisp-indent-function 'defun)
 (put :when         'lisp-indent-function 'defun)
@@ -301,7 +303,7 @@ States
   :o  operator
   :m  motion
   :r  replace
-  :g  global  (will work without evil)
+  :g  global  (binds the key without evil `current-global-map')
 
   These can be combined in any order, e.g. :nvi will apply to normal, visual and
   insert mode. The state resets after the following key=>def pair. If states are
@@ -315,7 +317,6 @@ Properties
   :map [KEYMAP(s)] [...]          inner keybinds are applied to KEYMAP(S)
   :keymap [KEYMAP(s)] [...]       same as :map
   :prefix [PREFIX] [...]          set keybind prefix for following keys
-  :alt-prefix [PREFIX] [...]      use non-normal-prefix for following keys
   :after [FEATURE] [...]          apply keybinds when [FEATURE] loads
   :textobj KEY INNER-FN OUTER-FN  define a text object keybind pair
   :if [CONDITION] [...]
