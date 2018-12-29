@@ -238,9 +238,3 @@
 
 (def-project-mode! +javascript-gulp-mode
   :when (locate-dominating-file default-directory "gulpfile.js"))
-
-(def-project-mode! +javascript-screeps-mode
-  :match "/screeps\\(?:-ai\\)?/.+$"
-  :modes (+javascript-npm-mode)
-  :add-hooks (+javascript|init-screeps-mode)
-  :on-load (load! "+screeps"))
