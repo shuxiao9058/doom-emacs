@@ -8,8 +8,7 @@
         default-input-method "pyim")
   (when (featurep! +rime)
     (setq pyim-default-scheme 'rime
-          pyim-title "ㄓ"))
-  )
+          pyim-title "ㄓ")))
 
 (use-package! liberime-config
   :when (featurep! +rime)
