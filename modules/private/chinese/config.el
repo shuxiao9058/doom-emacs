@@ -5,9 +5,11 @@
   :config
   (setq pyim-dcache-directory (concat doom-cache-dir "pyim/")
         pyim-page-tooltip t
+        pyim-debug t
         default-input-method "pyim")
   (when (featurep! +rime)
     (setq pyim-default-scheme 'rime
+          pyim-rime-limit 100
           pyim-title "ㄓ")))
 
 (use-package! liberime-config
