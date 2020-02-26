@@ -1,4 +1,4 @@
-;;; private/chinese/config.el -*- lexical-binding: t; -*-
+;;; private/eim/config.el -*- lexical-binding: t; -*-
 
 ;; (use-package! pyim
 ;;   :after-call after-find-file pre-command-hook
@@ -35,11 +35,18 @@
   :after liberime-config
   :config
   (setq default-input-method "rime"
-          ;; rime-show-candidate 'overlay
-          ;; rime-show-candidate 'posframe
-          ;; rime-show-candidate 'minibuffer
-          rime-show-candidate 'popup
-          )
+        ;; rime-show-candidate 'overlay
+        ;; rime-show-candidate 'posframe
+        ;; rime-show-candidate 'minibuffer
+        rime-show-candidate 'popup
+
+        ;; ;; 如果使用模式编辑，或是需要在一些特定的场景下自动使用英文，可以 ~rime-disable-predicates~
+        ;; ;; 一个在 ~evil-normal-state~ 中、在英文字母后面以及代码中自动使用英文的例子
+        ;; rime-disable-predicates
+        ;; '(evil-normal-state-p
+        ;;   rime--after-alphabet-char-p
+        ;;   rime--prog-in-code-p)
+        )
   )
 
 ;; (use-package! pangu-spacing
