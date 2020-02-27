@@ -32,7 +32,7 @@
 
 (use-package! rime
   :defer 1
-  :after liberime-config
+  ;; :after liberime-config
   :config
   (setq default-input-method "rime"
         ;; rime-show-candidate 'overlay
@@ -48,6 +48,9 @@
         ;;   rime--prog-in-code-p)
         )
   )
+
+
+(map! "C-\\" #'rime-toggle)
 
 ;; (use-package! pangu-spacing
 ;;   :hook (text-mode . pangu-spacing-mode)

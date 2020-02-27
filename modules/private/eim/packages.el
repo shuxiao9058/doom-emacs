@@ -27,8 +27,10 @@
            :files ("liberime-config.el" "src" "CMakeLists.txt" "Makefile")))
 
 (package! rime
-    :recipe (:host github
-        :repo "shuxiao9058/emacs-rime"
-        :files ("rime.el")
-        ))
-
+  :recipe (
+           :host github
+           :repo "DogLooksGood/emacs-rime"
+           ;; :local-repo "~/workspace/emacs-rime"
+           ;; :repo "shuxiao9058/emacs-rime"
+           :files ("rime.el")
+           ))
