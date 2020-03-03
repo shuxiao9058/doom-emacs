@@ -16,7 +16,7 @@
 (use-package! liberime-config
   :defer 1
   :init
-  (setq liberime-user-data-dir (expand-file-name "local/pyim/rime" doom-private-dir))
+  (setq liberime-user-data-dir (expand-file-name "local/rime" doom-private-dir))
 
   (add-hook 'liberime-after-start-hook
             (lambda ()
@@ -47,10 +47,13 @@
         ;;   rime--after-alphabet-char-p
         ;;   rime--prog-in-code-p)
         )
+
+  ;; (add-to-list 'rime-translate-keybindings "C-SPC")
   )
 
 
 (map! "C-\\" #'rime-toggle)
+(map! "C-M-s-SPC" #'rime-toggle)
 
 ;; (use-package! pangu-spacing
 ;;   :hook (text-mode . pangu-spacing-mode)

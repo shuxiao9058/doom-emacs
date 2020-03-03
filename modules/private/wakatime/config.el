@@ -1,6 +1,7 @@
 ;;; private/wakatime/config.el -*- lexical-binding: t; -*-
 
 (use-package! wakatime-mode
+  :after-call pre-command-hook
   :init (setq +wakatime-hide-filenames t)
   :hook ((org-mode . wakatime-mode)
          (prog-mode . wakatime-mode))
