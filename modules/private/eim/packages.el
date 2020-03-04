@@ -20,8 +20,8 @@
   :recipe (
            ;; :local-repo "~/workspace/liberime"
            :host github
-           :repo "DogLooksGood/liberime"
-           ;; :repo "merrickluo/liberime"
+           ; :repo "DogLooksGood/liberime"
+           :repo "merrickluo/liberime"
            ;; :repo "QiangF/liberime"
            ;; :repo "shuxiao9058/liberime"
            ;; :branch "feature/add_schema_config"
