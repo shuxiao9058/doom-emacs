@@ -16,7 +16,7 @@
 ;; (package! pangu-spacing :pin "f92898949b")
 
 
-(package! liberime-config
+(package! liberime
   :recipe (
            ;; :local-repo "~/workspace/liberime"
            :host github
@@ -25,7 +25,7 @@
            ;; :repo "QiangF/liberime"
            ;; :repo "shuxiao9058/liberime"
            ;; :branch "feature/add_schema_config"
-           :files ("liberime-config.el" "src" "CMakeLists.txt" "Makefile")))
+           :files ("liberime.el" "src" "CMakeLists.txt" "Makefile")))
 
 (package! rime
   :recipe (

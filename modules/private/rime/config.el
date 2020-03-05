@@ -13,7 +13,7 @@
 ;;           pyim-rime-limit 100
 ;;           pyim-title "ㄓ")))
 
-(use-package! liberime-config
+(use-package! liberime
   :defer 1
   :init
   (setq liberime-user-data-dir (expand-file-name "local/rime" doom-private-dir))
@@ -21,13 +21,6 @@
   (add-hook 'liberime-after-start-hook
             (lambda ()
               (liberime-select-schema "guhuwubi")))
-  ; :config
-  ; (liberime-load)
-  ;; (setq default-input-method "erime"
-
-  ;;       ;; erime-prompt-tooltip 'posframe
-  ;;       ;; erime-prompt-tooltip 'minibuffer
-  ;;       )
   )
 
 (use-package! rime
@@ -36,9 +29,9 @@
   :config
   (setq default-input-method "rime"
         ;; rime-show-candidate 'overlay
-        ;; rime-show-candidate 'posframe
-        ;; rime-show-candidate 'minibuffer
-        rime-show-candidate 'popup
+        ;; rime-show-candidate 'message
+        rime-show-candidate 'minibuffer
+        ;; rime-show-candidate 'popup
 
         ;; ;; 如果使用模式编辑，或是需要在一些特定的场景下自动使用英文，可以 ~rime-disable-predicates~
         ;; ;; 一个在 ~evil-normal-state~ 中、在英文字母后面以及代码中自动使用英文的例子
@@ -47,13 +40,10 @@
         ;;   rime--after-alphabet-char-p
         ;;   rime--prog-in-code-p)
         )
-
-  ;; (add-to-list 'rime-translate-keybindings "C-SPC")
   )
 
 
 (map! "C-\\" #'rime-toggle)
-(map! "C-M-s-SPC" #'rime-toggle)
 
 ;; (use-package! pangu-spacing
 ;;   :hook (text-mode . pangu-spacing-mode)
