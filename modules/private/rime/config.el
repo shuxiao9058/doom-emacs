@@ -1,4 +1,4 @@
-;;; private/eim/config.el -*- lexical-binding: t; -*-
+;;; private/rime/config.el -*- lexical-binding: t; -*-
 
 ;; (use-package! pyim
 ;;   :after-call after-find-file pre-command-hook

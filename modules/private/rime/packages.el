@@ -1,5 +1,5 @@
 ;; -*- no-byte-compile: t; -*-
-;;; private/eim/packages.el
+;;; private/rime/packages.el
 
 ;; (package! pyim :recipe (:local-repo "~/workspace/pyim"))
 
