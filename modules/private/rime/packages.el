@@ -29,9 +29,9 @@
 
 (package! rime
   :recipe (
-           :host github
-           :repo "DogLooksGood/emacs-rime"
-           ;; :local-repo "~/workspace/emacs-rime"
+           ;; :host github
+           ;; :repo "DogLooksGood/emacs-rime"
+           :local-repo "~/workspace/emacs-rime"
            ;; :repo "shuxiao9058/emacs-rime"
            :files ("rime.el")
            ))
